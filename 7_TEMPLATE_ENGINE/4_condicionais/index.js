@@ -6,6 +6,10 @@ const app = express()
 app.engine('handlebars', exphbs.engine())
 app.set('view engine', 'handlebars')
 
+app.get('/dashboard', (req, res) => {
+    res.render('dashboard')
+})
+
 app.get('/', (req, res) => {
 
     const user = {
@@ -15,10 +19,12 @@ app.get('/', (req, res) => {
     }
 
     const mensagemTeste = 'Mensagem de teste'
+
+    const auth = true
     
-    res.render('home', {user: user, mensagemTeste})
+    res.render('home', {user: user, mensagemTeste, auth})
 })
 
-app.listen(3000, () => {
+app.listen(3030, () => {
     console.log('App rodando em: http://localhost:3000');
 })
